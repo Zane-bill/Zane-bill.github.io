@@ -8,7 +8,6 @@
             margin: 0;
             padding: 0;
         }
-
         .wrap {
             width: 400px;
             height: 200px;
@@ -16,9 +15,7 @@
             perspective: 1000px;
             margin: 200px auto;
             /*transform: rotateZ(-90deg);*/
-
         }
-
         .main {
             width: 400px;
             height: 200px;
@@ -26,7 +23,6 @@
             transform-style: preserve-3d;
             transform: rotateX(-18deg);
             /*animation: move 6s infinite;*/
-
         }
 
         .main img {
@@ -39,7 +35,6 @@
 
         .main img:nth-child(1) {
             transform: rotateY(0deg) translateZ(346px);
-
         }
 
         .main img:nth-child(2) {
@@ -149,13 +144,13 @@
         i--;
         main.style.transform = "rotateX(-18deg)  rotateY(" + -(60 * i) + "deg)  ";
         main.style.transition = "transform 1s";
-        console.log(i, main.style.transform);
+//         console.log(i, main.style.transform);
         main.style.animation = "cancel";
     };
     btn6.onclick = function () {
         i++;
         main.style.transform = " rotateX(-18deg)  rotateY(" + -(60 * i) + "deg)";
-        console.log(i, main.style.transform);
+//         console.log(i, main.style.transform);
         main.style.transition = "transform 1s";
         main.style.animation = "cancel";
     };
