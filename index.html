@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
+        .wrap {
+            width: 400px;
+            height: 200px;
+            position: relative;
+            perspective: 1000px;
+            margin: 200px auto;
+            /*transform: rotateZ(-90deg);*/
+
+        }
+
+        .main {
+            width: 400px;
+            height: 200px;
+            position: absolute;
+            transform-style: preserve-3d;
+            transform: rotateX(-18deg);
+            /*animation: move 6s infinite;*/
+
+        }
+
+        .main img {
+            width: 380px;
+            height: 180px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .main img:nth-child(1) {
+            transform: rotateY(0deg) translateZ(346px);
+
+        }
+
+        .main img:nth-child(2) {
+            transform: rotateY(60deg) translateZ(346px);
+        }
+
+        .main img:nth-child(3) {
+            transform: rotateY(120deg) translateZ(346px);
+        }
+
+        .main img:nth-child(4) {
+            transform: rotateY(180deg) translateZ(346px);
+        }
+
+        .main img:nth-child(5) {
+            transform: rotateY(240deg) translateZ(346px);
+        }
+
+        .main img:nth-child(6) {
+            transform: rotateY(300deg) translateZ(346px);
+        }
+
+        @keyframes move {
+            0% {
+                transform: rotateX(-18deg) rotateY(0deg);
+            }
+            16% {
+                transform: rotateX(-18deg) rotateY(-60deg);
+            }
+            32% {
+                transform: rotateX(-18deg) rotateY(-120deg);
+            }
+            48% {
+                transform: rotateX(-18deg) rotateY(-180deg);
+            }
+            64% {
+                transform: rotateX(-18deg) rotateY(-240deg);
+            }
+            80% {
+                transform: rotateX(-18deg) rotateY(-300deg);
+            }
+            100% {
+                transform: rotateX(-18deg) rotateY(-360deg);
+            }
+
+        }
+        .btns{
+            position: fixed;
+            left: 50px;
+            top: 120px;
+        }
+        .btns button {
+            display: block;
+            width: 100px;
+            height: 50px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <div class="main">
+        <img src="imgs/1.jpg" alt="">
+        <img src="imgs/2.jpg" alt="">
+        <img src="imgs/3.jpg" alt="">
+        <img src="imgs/4.jpg" alt="">
+        <img src="imgs/5.jpg" alt="">
+        <img src="imgs/6.jpg" alt="">
+    </div>
+</div>
+<div class="btns">
+    <button class="btn1">垂直播放</button>
+    <button class="btn2">水平播放</button>
+    <button class="btn3">停止播放</button>
+    <button class="btn4">自动播放</button>
+    <button class="btn5">上一张</button>
+    <button class="btn6">下一张</button>
+</div>
+
+<script>
+    var btn1 = document.querySelector(".btn1");
+    var btn2 = document.querySelector(".btn2");
+    var btn3 = document.querySelector(".btn3");
+    var btn4 = document.querySelector(".btn4");
+    var btn5 = document.querySelector(".btn5");
+    var btn6 = document.querySelector(".btn6");
+    var wrap = document.querySelector(".wrap");
+    var main = document.querySelector(".main");
+
+    btn1.onclick = function () {
+        wrap.style.transform = "rotateZ(-90deg)";
+    };
+    btn2.onclick = function () {
+        wrap.style.transform = "rotateZ(0deg)";
+    };
+    btn3.onclick = function () {
+        main.style.animation = "move 6s infinite paused";
+    };
+    btn4.onclick = function () {
+        main.style.animation = "move 6s infinite running";
+    };
+
+    var i = 0;
+    btn5.onclick = function () {
+        i--;
+        main.style.transform = "rotateX(-18deg)  rotateY(" + -(60 * i) + "deg)  ";
+        main.style.transition = "transform 1s";
+        console.log(i, main.style.transform);
+        main.style.animation = "cancel";
+    };
+    btn6.onclick = function () {
+        i++;
+        main.style.transform = " rotateX(-18deg)  rotateY(" + -(60 * i) + "deg)";
+        console.log(i, main.style.transform);
+        main.style.transition = "transform 1s";
+        main.style.animation = "cancel";
+    };
+
+
+</script>
+
+</body>
+</html>
