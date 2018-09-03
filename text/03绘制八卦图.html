@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            display: block;
+            margin: 30px auto;
+            background-color: #b3d6bf;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="600">你的浏览器太垃圾,快升级吧</canvas>
+
+</body>
+<script>
+    draw();
+
+    function draw() {
+        var canvas = document.querySelector("canvas");
+        if (!canvas.getContext) return;
+        var ctx = canvas.getContext("2d");
+
+        var pi = Math.PI;
+        ctx.beginPath();
+        ctx.arc(300, 300, 200, 0, pi * 2);  //大圆布局
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(300, 300, 200, pi / 2, pi * 1.5);  //左边半黑
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(300, 300, 200, pi / 2, pi * 1.5, true); //右边半白
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(300, 200, 100, 0, pi * 2);  //上边黑圆
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(300, 200,30, 0, pi * 2); //上边黑圆 里面的白圆
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(300, 400, 100, 0, pi * 2);  //下边白圆
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(300, 400,30, 0, pi * 2);  //下边白圆 里面的黑圆
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+    }
+
+</script>
+</html>
